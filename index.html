@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PDF² - The Future of PDFs</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      text-align: center;
+      padding: 2rem;
+    }
+    header {
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #38bdf8;
+    }
+    h2 {
+      color: #facc15;
+      margin-top: 1.5rem;
+    }
+    p {
+      max-width: 600px;
+      margin: 0.5rem auto;
+    }
+    .upload-box {
+      margin: 2rem auto;
+      padding: 2rem;
+      border: 2px dashed #38bdf8;
+      border-radius: 1rem;
+      max-width: 400px;
+      background: #1e293b;
+    }
+    input[type=file] {
+      margin: 1rem 0;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #38bdf8;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0ea5e9;
+    }
+    .progress {
+      width: 80%;
+      margin: 1rem auto;
+      height: 20px;
+      background: #334155;
+      border-radius: 10px;
+      overflow: hidden;
+      display: none;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #22c55e;
+      transition: width 0.5s;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .pricing {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .plan {
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid #334155;
+    }
+    .plan h3 {
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PDF²</h1>
+    <p><em>Because once isn’t enough.</em></p>
+  </header>
+
+  <section class="upload-box">
+    <h2>Convert Your PDF</h2>
+    <input type="file" id="pdfInput" accept="application/pdf"/>
+    <br/>
+    <button onclick="convertPDF()">Convert Now</button>
+    <div class="progress" id="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p id="status"></p>
+  </section>
+
+  <section>
+    <h2>Pricing</h2>
+    <div class="pricing">
+      <div class="plan">
+        <h3>Free</h3>
+        <p>1 Conversion/month</p>
+        <p>Same PDF, new name</p>
+        <p>Price: $0</p>
+      </div>
+      <div class="plan">
+        <h3>Pro</h3>
+        <p>Unlimited conversions</p>
+        <p>99.9% identical PDFs</p>
+        <p>Price: $19.99/mo</p>
+      </div>
+      <div class="plan">
+        <h3>Enterprise</h3>
+        <p>Billions of PDFs</p>
+        <p>24/7 PDF engineers</p>
+        <p>Contact Sales</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 PDF² Inc. Proudly Useless™</p>
+  </footer>
+
+  <script>
+    function convertPDF() {
+      const fileInput = document.getElementById("pdfInput");
+      const progress = document.getElementById("progress");
+      const progressBar = document.getElementById("progressBar");
+      const status = document.getElementById("status");
+
+      if (!fileInput.files.length) {
+        alert("Please select a PDF file first!");
+        return;
+      }
+
+      progress.style.display = "block";
+      status.textContent = "Converting...";
+
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          const file = fileInput.files[0];
+          const blob = file.slice(0, file.size, "application/pdf");
+          const newFile = new File([blob], file.name.replace(".pdf", "_converted.pdf"), {type: "application/pdf"});
+          const url = URL.createObjectURL(newFile);
+
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = newFile.name;
+          a.click();
+          status.textContent = "Conversion complete! Same PDF, new name 🎉";
+        } else {
+          width += 20;
+          progressBar.style.width = width + "%";
+        }
+      }, 500);
+    }
+  </script>
+</body>
+</html>
