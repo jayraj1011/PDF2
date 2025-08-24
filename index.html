@@ -10,46 +10,105 @@
 <body>
   <header>
     <h1>PDF²</h1>
-    <p><em>Because once isn’t enough.</em></p>
+    <p class="tagline"><em>Because once isn't enough.</em></p>
+    <p class="buzzwords">🚀 AI-Powered • Blockchain-Ready • Cloud-Native • Machine Learning Enhanced 🤖</p>
+    <div class="warning-banner">
+      ⚠️ WARNING: This software is 100% honest about being completely useless ⚠️
+    </div>
   </header>
 
   <section class="upload-box">
-    <h2>Convert Your PDF</h2>
+    <h2>🔄 Revolutionary PDF Processing</h2>
     <input type="file" id="pdfInput" accept="application/pdf"/>
     <br/>
-    <button onclick="convertPDF()">Convert Now</button>
+    <div class="button-row">
+      <button onclick="convertPDF()">🔄 Convert Now</button>
+      <button onclick="reversePDF()">↩️ Reverse Convert</button>
+      <button onclick="optimizePDF()">⚡ Optimize PDF</button>
+      <button onclick="analyzePDF()">🤖 AI Analyze</button>
+      <button onclick="enhancePDF()" class="premium-button">✨ AI Enhance</button>
+      <button onclick="quantumPDF()">🔬 Quantum Process</button>
+      <button onclick="blockchainPDF()">₿ Blockchain Verify</button>
+      <button onclick="compressPDF()">🗜️ Ultra Compress</button>
+    </div>
     <div class="progress" id="progress">
       <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="ai-thinking" id="aiThinking">
+      <div id="thinkingText"></div>
     </div>
     <p id="status"></p>
   </section>
 
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number" id="counter">0</div>
+      <div>PDFs "Converted"</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" id="satisfaction">99.7%</div>
+      <div>User Confusion</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" id="energy">♾️</div>
+      <div>Energy Wasted</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" id="co2">420kg</div>
+      <div>CO₂ per PDF</div>
+    </div>
+  </div>
+
+  <section class="feature-section">
+    <h2>🌟 Revolutionary Features</h2>
+    <div class="testimonial">
+      <p>"I uploaded a PDF and got the exact same PDF back! Revolutionary!" - Confused User #1,337</p>
+    </div>
+    <div class="testimonial">
+      <p>"The AI analysis told me my PDF was indeed a PDF. Mind = Blown 🤯" - Satisfied Customer</p>
+    </div>
+    <div class="testimonial">
+      <p>"I've saved literally dozens of seconds by not using this software!" - Former User</p>
+    </div>
+  </section>
+
   <section>
-    <h2>Pricing</h2>
+    <h2>💸 Pricing Plans</h2>
     <div class="pricing">
       <div class="plan">
-        <h3>Free</h3>
-        <p>1 Conversion/month</p>
-        <p>Same PDF, new name</p>
-        <p>Price: $0</p>
+        <h3>Free Tier</h3>
+        <p>✅ 1 "Conversion"/month</p>
+        <p>✅ Same PDF, new name</p>
+        <p>✅ 10GB bandwidth waste</p>
+        <p>✅ Basic confusion</p>
+        <p><strong>Price: $0</strong></p>
       </div>
       <div class="plan">
-        <h3>Pro</h3>
-        <p>Unlimited conversions</p>
-        <p>99.9% identical PDFs</p>
-        <p>Price: $19.99/mo</p>
+        <h3>Pro Delusion</h3>
+        <p>✅ Unlimited "conversions"</p>
+        <p>✅ 99.9% identical PDFs</p>
+        <p>✅ AI-powered file renaming</p>
+        <p>✅ Quantum uncertainty</p>
+        <p>✅ Blockchain verification</p>
+        <p><strong>Price: $19.99/mo</strong></p>
       </div>
-      <div class="plan">
-        <h3>Enterprise</h3>
-        <p>Billions of PDFs</p>
-        <p>24/7 PDF engineers</p>
-        <p>Contact Sales</p>
+      <div class="plan enterprise">
+        <h3>🏢 Enterprise Chaos</h3>
+        <p>✅ Billions of PDFs</p>
+        <p>✅ 24/7 PDF engineers</p>
+        <p>✅ Custom uselessness</p>
+        <p>✅ Machine learning confusion</p>
+        <p>✅ Guaranteed data loss</p>
+        <p><strong>Contact Sales</strong></p>
+        <small>(Warning: Our sales team is also an AI that analyzes PDFs)</small>
       </div>
     </div>
   </section>
 
   <footer>
     <p>© 2025 PDF² Inc. Proudly Useless™</p>
+    <p><small>This software has been certified by the International Bureau of Pointless Technology</small></p>
+    <p><small>Carbon footprint equivalent to a small country • Privacy policy: We forgot what data we collect</small></p>
   </footer>
 
   <script src="script.js"></script>
