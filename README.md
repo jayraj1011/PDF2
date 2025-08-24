@@ -4,7 +4,7 @@
   <img src="PDF2.png" width="200" alt="PDF² Logo">
 </p>
 
-**Tagline:** *Because once isn’t enough.*  
+*Because once isn’t enough.*
 
 ---
 
