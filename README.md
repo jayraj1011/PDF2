@@ -1,7 +1,7 @@
 # 🖤 PDF² – The Future of PDFs  
 
 <p align="center">
-  <img src="PD.png" width="200" alt="PDF² Logo">
+  <img src="PDF2.png" width="200" alt="PDF² Logo">
 </p>
 
 **Tagline:** *Because once isn’t enough.*  
