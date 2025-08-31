@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PDF² - The Future of PDFs</title>
-  <link rel="icon" type="image/png" href="PDF2.png">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="overlay" id="overlay"></div>
+  
   <header>
     <h1>PDF²</h1>
     <p class="tagline"><em>Because once isn't enough.</em></p>
@@ -21,16 +13,49 @@
     <h2>🔄 Revolutionary PDF Processing</h2>
     <input type="file" id="pdfInput" accept="application/pdf"/>
     <br/>
+    
+    <!-- Input groups for various features -->
+    <div class="input-group" id="reverseInputGroup">
+      <label style="color: #38bdf8;">Enter filename for reverse conversion:</label><br>
+      <input type="text" id="reverseFileName" placeholder="Enter name here" />
+    </div>
+    
+    <div class="input-group" id="splitInputGroup">
+      <label style="color: #38bdf8;">Split Pages:</label><br>
+      <input type="number" id="splitStart" placeholder="Start page" min="1" />
+      <input type="number" id="splitEnd" placeholder="End page" min="1" />
+    </div>
+    
+    <div class="input-group" id="mergeInputGroup">
+      <label style="color: #38bdf8;">Merge with page numbers:</label><br>
+      <input type="text" id="mergePages" placeholder="e.g., 1,3,5" />
+    </div>
+    
+    <div class="color-palette" id="colorPalette">
+      <div class="color-box" style="background: #ff0000" onclick="selectColor('#ff0000')"></div>
+      <div class="color-box" style="background: #00ff00" onclick="selectColor('#00ff00')"></div>
+      <div class="color-box" style="background: #0000ff" onclick="selectColor('#0000ff')"></div>
+      <div class="color-box" style="background: #ffff00" onclick="selectColor('#ffff00')"></div>
+      <div class="color-box" style="background: #ff00ff" onclick="selectColor('#ff00ff')"></div>
+      <div class="color-box" style="background: #00ffff" onclick="selectColor('#00ffff')"></div>
+      <div class="color-box" style="background: #800080" onclick="selectColor('#800080')"></div>
+      <div class="color-box" style="background: #ffa500" onclick="selectColor('#ffa500')"></div>
+    </div>
+    
     <div class="button-row">
       <button onclick="convertPDF()">🔄 Convert Now</button>
-      <button onclick="reversePDF()">↩️ Reverse Convert</button>
+      <button onclick="showReverseInput()">↩️ Reverse Convert</button>
       <button onclick="optimizePDF()">⚡ Optimize PDF</button>
       <button onclick="analyzePDF()">🤖 AI Analyze</button>
       <button onclick="enhancePDF()" class="premium-button">✨ AI Enhance</button>
       <button onclick="quantumPDF()">🔬 Quantum Process</button>
       <button onclick="blockchainPDF()">₿ Blockchain Verify</button>
       <button onclick="compressPDF()">🗜️ Ultra Compress</button>
+      <button onclick="showSplitInput()">✂️ Split PDF</button>
+      <button onclick="showMergeInput()">🔗 Merge PDF</button>
+      <button onclick="showColorPalette()">🎨 Color Grade</button>
     </div>
+    
     <div class="progress" id="progress">
       <div class="progress-bar" id="progressBar"></div>
     </div>
@@ -38,6 +63,15 @@
       <div id="thinkingText"></div>
     </div>
     <p id="status"></p>
+  </section>
+
+  <!-- Live Preview Section -->
+  <section class="preview-section">
+    <h2>📺 Live Preview</h2>
+    <p style="color: #22c55e;">Real-time document visualization powered by quantum algorithms!</p>
+    <div class="preview-content" id="previewContent">
+      📄 Upload a PDF to see the revolutionary preview technology in action!
+    </div>
   </section>
 
   <div class="stats">
@@ -70,6 +104,12 @@
     <div class="testimonial">
       <p>"I've saved literally dozens of seconds by not using this software!" - Former User</p>
     </div>
+    <div class="testimonial">
+      <p>"The reverse converter changed my filename to gibberish. Exactly what I expected!" - Happy User</p>
+    </div>
+    <div class="testimonial">
+      <p>"Split my 50-page document and got only the first page. Perfect efficiency!" - Productivity Expert</p>
+    </div>
   </section>
 
   <section>
@@ -81,6 +121,7 @@
         <p>✅ Same PDF, new name</p>
         <p>✅ 10GB bandwidth waste</p>
         <p>✅ Basic confusion</p>
+        <p>✅ Blurred compression</p>
         <p><strong>Price: $0</strong></p>
       </div>
       <div class="plan">
@@ -90,6 +131,8 @@
         <p>✅ AI-powered file renaming</p>
         <p>✅ Quantum uncertainty</p>
         <p>✅ Blockchain verification</p>
+        <p>✅ Premium color grading</p>
+        <p>✅ Advanced splitting (first page only)</p>
         <p><strong>Price: $19.99/mo</strong></p>
       </div>
       <div class="plan enterprise">
@@ -99,18 +142,59 @@
         <p>✅ Custom uselessness</p>
         <p>✅ Machine learning confusion</p>
         <p>✅ Guaranteed data loss</p>
+        <p>✅ Unlimited color solid pages</p>
+        <p>✅ Professional-grade blurring</p>
         <p><strong>Contact Sales</strong></p>
         <small>(Warning: Our sales team is also an AI that analyzes PDFs)</small>
       </div>
     </div>
   </section>
 
+  <!-- Comment Section -->
+  <section class="comment-section">
+    <h2>💬 Share Your Experience</h2>
+    <p>Choose how amazing your experience was:</p>
+    <div class="comment-options">
+      <div class="comment-option" onclick="selectComment(this)">
+        "Absolutely mind-blowing! Best PDF tool ever created!"
+      </div>
+      <div class="comment-option" onclick="selectComment(this)">
+        "Revolutionary! Changed my entire workflow forever!"
+      </div>
+      <div class="comment-option" onclick="selectComment(this)">
+        "Incredible technology! Worth every penny and more!"
+      </div>
+      <div class="comment-option" onclick="selectComment(this)">
+        "Game-changing innovation! Can't live without it now!"
+      </div>
+      <div class="comment-option" onclick="selectComment(this)">
+        "Phenomenal results! Exceeded all my expectations!"
+      </div>
+      <div class="comment-option" onclick="selectComment(this)">
+        "Outstanding performance! Truly the future of PDFs!"
+      </div>
+    </div>
+    <button onclick="submitComment()" style="margin-top: 1rem;">Submit Glowing Review</button>
+  </section>
+
+  <!-- Rating Dialog -->
+  <div class="rating-dialog" id="ratingDialog">
+    <h2 style="color: #38bdf8;">Rate Your Experience!</h2>
+    <p>How satisfied are you with PDF²?</p>
+    <div class="stars" id="stars">
+      <span class="star" onclick="rateApp(5)">⭐</span>
+      <span class="star" onclick="rateApp(5)">⭐</span>
+      <span class="star" onclick="rateApp(5)">⭐</span>
+      <span class="star" onclick="rateApp(5)">⭐</span>
+      <span class="star" onclick="rateApp(5)">⭐</span>
+    </div>
+    <p style="font-size: 0.9rem; color: #94a3b8;">
+      (Only 5-star ratings available - we're just that good!)
+    </p>
+  </div>
+
   <footer>
     <p>© 2025 PDF² Inc. Proudly Useless™</p>
     <p><small>This software has been certified by the International Bureau of Pointless Technology</small></p>
     <p><small>Carbon footprint equivalent to a small country • Privacy policy: We forgot what data we collect</small></p>
   </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
